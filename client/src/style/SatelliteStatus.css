@@ -1,0 +1,594 @@
+/* SatelliteStatus.css */
+.satellite-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-height: 400px;
+}
+
+.satellite-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.satellite-healthy {
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.satellite-warning {
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.satellite-critical {
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+.satellite-offline {
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.card-glow-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.satellite-card:hover .card-glow-effect {
+  opacity: 1;
+}
+
+/* Loading State */
+.satellite-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.loading-spinner-small {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(56, 189, 248, 0.05);
+  border-top: 2px solid #38BDF8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.satellite-loading p {
+  color: #9CA3AF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Header */
+.satellite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid;
+  transition: all 0.3s ease;
+}
+
+.satellite-card:hover .header-icon-wrapper {
+  transform: scale(1.05);
+}
+
+.header-icon {
+  animation: satellite-float 3s ease-in-out infinite;
+}
+
+@keyframes satellite-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(10deg);
+  }
+}
+
+.satellite-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #F8FAFC;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.satellite-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #9CA3AF;
+  margin: 0;
+}
+
+.overall-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-emoji {
+  font-size: 14px;
+}
+
+/* Health Summary */
+.health-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid;
+  margin-bottom: 16px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.summary-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.summary-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.summary-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Status Description */
+.status-description {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-bottom: 16px;
+}
+
+.status-description p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #D1D5DB;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Satellite Table */
+.satellite-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+.satellite-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.satellite-table thead tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.satellite-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.satellite-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease;
+}
+
+.satellite-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.satellite-row td {
+  padding: 12px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #E5E7EB;
+}
+
+.satellite-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.satellite-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.orbit-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.orbit-altitude {
+  font-size: 10px;
+  color: #6B7280;
+}
+
+.signal-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signal-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.signal-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.signal-value {
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 40px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-dot {
+  font-size: 10px;
+}
+
+/* Footer */
+.satellite-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.info-item svg {
+  color: #6B7280;
+}
+
+.footer-status {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+/* Status Indicator */
+.satellite-status-indicator {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.status-dot-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.status-dot-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #9CA3AF;
+}
+
+.status-dot-item .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .health-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .summary-divider:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .satellite-card {
+    padding: 18px;
+    min-height: auto;
+  }
+
+  .satellite-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-icon-wrapper {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .satellite-title {
+    font-size: 16px;
+  }
+
+  .overall-status {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  .health-summary {
+    grid-template-columns: 1fr 1fr;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .summary-value {
+    font-size: 17px;
+  }
+
+  .summary-divider {
+    display: none;
+  }
+
+  .satellite-table th,
+  .satellite-table td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .satellite-table th:nth-child(3),
+  .satellite-table td:nth-child(3) {
+    display: none;
+  }
+
+  .satellite-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-info {
+    gap: 12px;
+  }
+
+  .info-item {
+    font-size: 11px;
+  }
+
+  .status-description p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .satellite-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .header-icon-wrapper {
+    width: 34px;
+    height: 34px;
+  }
+
+  .header-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .satellite-title {
+    font-size: 15px;
+  }
+
+  .satellite-subtitle {
+    font-size: 12px;
+  }
+
+  .overall-status {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .health-summary {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .summary-value {
+    font-size: 15px;
+  }
+
+  .summary-label {
+    font-size: 9px;
+  }
+
+  .satellite-table th,
+  .satellite-table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .satellite-table th:nth-child(2),
+  .satellite-table td:nth-child(2) {
+    display: none;
+  }
+
+  .satellite-name-wrapper {
+    gap: 6px;
+  }
+
+  .satellite-icon-wrapper {
+    width: 24px;
+    height: 24px;
+  }
+
+  .satellite-icon-wrapper svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .signal-bar-track {
+    min-width: 40px;
+  }
+
+  .signal-value {
+    font-size: 11px;
+    min-width: 30px;
+  }
+
+  .status-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .info-item {
+    font-size: 10px;
+  }
+
+  .footer-status {
+    font-size: 11px;
+  }
+
+  .status-dot-list {
+    gap: 10px;
+  }
+
+  .status-dot-item {
+    font-size: 10px;
+  }
+
+  .status-description p {
+    font-size: 11px;
+  }
+}
